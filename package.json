@@ -1,6 +1,6 @@
 {
   "name": "@steadfastcode/site-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Small, dependency-free pieces Steadfast Code reuses across the sites it builds: a photo viewer and justified photo rows.",
   "type": "module",
   "exports": {

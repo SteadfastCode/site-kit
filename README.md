@@ -9,7 +9,7 @@ site, a WordPress theme or a hand-written page, and each one is tested in a real
 A full-screen viewer for a set of photo links: previous and next on buttons, arrow keys and swipe;
 Esc, the close button or a click outside the photo to close; a "2 of 7" count; the neighbouring
 photos load ahead. The links stay ordinary links to the full-size image, so with JavaScript off, or
-on a ctrl/cmd/middle click, the photo opens the way it always would. About 2 KB of script, inlined.
+on a ctrl/cmd/middle click, the photo opens the way it always would. About 3 KB of script (1 KB compressed), inlined with its comments stripped.
 
 **Astro**
 
@@ -52,7 +52,7 @@ Import `@steadfastcode/site-kit/justified-rows.css`. Tune `--row` (row height) a
 ## Installing
 
 ```sh
-yarn add @steadfastcode/site-kit@github:SteadfastCode/site-kit#v0.1.0
+yarn add @steadfastcode/site-kit@github:SteadfastCode/site-kit#v0.1.1
 ```
 
 Pin a tag; `main` moves.

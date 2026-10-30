@@ -4,7 +4,10 @@
 // a non-Astro site uses (photo-viewer.js, photo-viewer.css); the script is inlined so the page
 // makes no extra request for it.
 import './photo-viewer.css';
-import script from './photo-viewer.js?raw';
+import source from './photo-viewer.js?raw';
+import { inlineScript } from './inline.js';
+
+const script = inlineScript(source);
 
 interface Props {
   /** Selector for the links that open the viewer; each link's href is the full-size image. */
