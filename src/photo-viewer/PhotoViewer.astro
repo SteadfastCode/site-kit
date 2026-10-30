@@ -1,0 +1,35 @@
+---
+// Steadfast Code site-kit: the photo viewer as an Astro component. Put it once on a page that
+// has photo links; `links` is the CSS selector for them. The script and styles are the same files
+// a non-Astro site uses (photo-viewer.js, photo-viewer.css); the script is inlined so the page
+// makes no extra request for it.
+import './photo-viewer.css';
+import script from './photo-viewer.js?raw';
+
+interface Props {
+  /** Selector for the links that open the viewer; each link's href is the full-size image. */
+  links: string;
+  /** "{n} of {total}" by default. */
+  countFormat?: string;
+  label?: string;
+  closeLabel?: string;
+  prevLabel?: string;
+  nextLabel?: string;
+}
+const {
+  links,
+  countFormat = '{n} of {total}',
+  label = 'Photo viewer',
+  closeLabel = 'Close',
+  prevLabel = 'Previous photo',
+  nextLabel = 'Next photo',
+} = Astro.props;
+---
+<dialog class="pv" data-photo-viewer data-links={links} data-count-format={countFormat} aria-label={label}>
+  <button type="button" class="pv-close" data-pv="close" aria-label={closeLabel}>&times;</button>
+  <p class="pv-count" data-pv-count aria-live="polite"></p>
+  <button type="button" class="pv-prev" data-pv="prev" aria-label={prevLabel}>&#8249;</button>
+  <figure class="pv-stage" data-pv-stage><img data-pv-image alt="" /><figcaption data-pv-caption></figcaption></figure>
+  <button type="button" class="pv-next" data-pv="next" aria-label={nextLabel}>&#8250;</button>
+</dialog>
+<script is:inline set:html={script} />

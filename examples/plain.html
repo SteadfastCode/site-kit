@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>site-kit: photo viewer and justified rows, plain HTML</title>
+  <link rel="stylesheet" href="../src/justified-rows.css">
+  <link rel="stylesheet" href="../src/photo-viewer/photo-viewer.css">
+  <style>body { font-family: system-ui, sans-serif; margin: 2rem; } figure { margin: 0; } img { border-radius: .5rem; }</style>
+</head>
+<body>
+  <h1>Photo viewer</h1>
+  <!-- Any site: the links' hrefs are the full-size images; --r is each image's width / height. -->
+  <div class="justified-rows photos">
+    <figure style="--r:1.7778"><a href="img/1.svg"><img src="img/1.svg" width="1600" height="900" alt="One, landscape"></a><figcaption>The first photo</figcaption></figure>
+    <figure style="--r:0.5625"><a href="img/2.svg"><img src="img/2.svg" width="900" height="1600" alt="Two, portrait"></a></figure>
+    <figure style="--r:1.7778"><a href="img/3.svg" data-caption="A caption from data-caption"><img src="img/3.svg" width="1600" height="900" alt="Three"></a></figure>
+    <figure style="--r:1"><a href="img/4.svg"><img src="img/4.svg" width="1200" height="1200" alt="Four, square"></a></figure>
+  </div>
+
+  <h2>A single photo</h2>
+  <p><a class="solo" href="img/1.svg"><img src="img/1.svg" width="320" height="180" alt="Alone"></a></p>
+
+  <dialog class="pv" data-photo-viewer data-links=".photos a" data-count-format="{n} of {total}" aria-label="Photo viewer">
+    <button type="button" class="pv-close" data-pv="close" aria-label="Close">&times;</button>
+    <p class="pv-count" data-pv-count aria-live="polite"></p>
+    <button type="button" class="pv-prev" data-pv="prev" aria-label="Previous photo">&#8249;</button>
+    <figure class="pv-stage" data-pv-stage><img data-pv-image alt=""><figcaption data-pv-caption></figcaption></figure>
+    <button type="button" class="pv-next" data-pv="next" aria-label="Next photo">&#8250;</button>
+  </dialog>
+  <dialog class="pv" id="solo-viewer" data-photo-viewer data-links="a.solo" aria-label="Photo viewer">
+    <button type="button" class="pv-close" data-pv="close" aria-label="Close">&times;</button>
+    <p class="pv-count" data-pv-count></p>
+    <button type="button" class="pv-prev" data-pv="prev" aria-label="Previous photo">&#8249;</button>
+    <figure class="pv-stage" data-pv-stage><img data-pv-image alt=""><figcaption data-pv-caption></figcaption></figure>
+    <button type="button" class="pv-next" data-pv="next" aria-label="Next photo">&#8250;</button>
+  </dialog>
+  <script src="../src/photo-viewer/photo-viewer.js"></script>
+</body>
+</html>

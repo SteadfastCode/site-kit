@@ -1,0 +1,53 @@
+/* Steadfast Code site-kit: photo viewer. Theme it with the --pv-* properties on .pv. */
+.pv {
+  --pv-bg: rgba(12, 16, 22, 0.95);
+  --pv-fg: #fff;
+  --pv-muted: #cbd5e1;
+  --pv-button: rgba(255, 255, 255, 0.14);
+  --pv-button-hover: rgba(255, 255, 255, 0.28);
+  --pv-radius: 0.5rem;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 3.5rem 4rem 2rem;
+  border: 0;
+  background: var(--pv-bg);
+  color: var(--pv-fg);
+  /* Sideways swipes are ours (previous/next); vertical panning and pinch-zoom stay the browser's. */
+  touch-action: pan-y pinch-zoom;
+}
+.pv[open] { display: grid; place-items: center; }
+.pv::backdrop { background: rgba(0, 0, 0, 0.6); }
+html.pv-open { overflow: hidden; }
+.pv-stage { margin: 0; display: grid; justify-items: center; gap: 0.6rem; max-width: 100%; }
+.pv-stage img { display: block; max-width: 100%; max-height: calc(100dvh - 8rem); width: auto; height: auto; border-radius: var(--pv-radius); }
+.pv-stage figcaption { color: var(--pv-muted); text-align: center; font-size: 0.95rem; }
+.pv-stage figcaption:empty { display: none; }
+.pv button {
+  position: fixed;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--pv-button);
+  color: var(--pv-fg);
+  font: inherit;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.pv button:hover, .pv button:focus-visible { background: var(--pv-button-hover); }
+.pv-close { top: 0.75rem; right: 0.75rem; }
+.pv-prev { left: 0.75rem; top: 50%; transform: translateY(-50%); }
+.pv-next { right: 0.75rem; top: 50%; transform: translateY(-50%); }
+.pv-count { position: fixed; top: 1.4rem; left: 1rem; margin: 0; color: var(--pv-muted); font-size: 0.9rem; }
+.pv-single .pv-prev, .pv-single .pv-next { display: none; }
+@media (max-width: 40rem) {
+  .pv { padding: 3.5rem 0.5rem 1.5rem; }
+  .pv-prev, .pv-next { top: auto; bottom: 0.75rem; transform: none; }
+  .pv-stage img { max-height: calc(100dvh - 10rem); }
+}

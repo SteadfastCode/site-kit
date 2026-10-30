@@ -1,0 +1,19 @@
+{
+  "name": "@steadfastcode/site-kit",
+  "version": "0.1.0",
+  "description": "Small, dependency-free pieces Steadfast Code reuses across the sites it builds: a photo viewer and justified photo rows.",
+  "type": "module",
+  "exports": {
+    "./photo-viewer": "./src/photo-viewer/PhotoViewer.astro",
+    "./photo-viewer.js": "./src/photo-viewer/photo-viewer.js",
+    "./photo-viewer.css": "./src/photo-viewer/photo-viewer.css",
+    "./justified-rows.css": "./src/justified-rows.css"
+  },
+  "files": ["src"],
+  "peerDependencies": { "astro": ">=5" },
+  "peerDependenciesMeta": { "astro": { "optional": true } },
+  "scripts": {
+    "test": "NODE_PATH=\"$(npm root -g)\" node --test test/*.test.mjs"
+  },
+  "repository": "github:SteadfastCode/site-kit"
+}
